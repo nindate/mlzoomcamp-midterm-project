@@ -69,19 +69,27 @@ python3 -m venv mlzoomcamp
 
 3. Activate the virtual environment.
 
-```. ./mlzoomcamp/bin/activate```
+```
+. ./mlzoomcamp/bin/activate
+```
 
 4. Clone this repo
 
-```git clone https://github.com/nindate/mlzoomcamp-midterm-project.git```
+```
+git clone https://github.com/nindate/mlzoomcamp-midterm-project.git
+```
 
 5. Change to the directory that has the required files
 
-```cd mlzoomcamp-midterm-project/```
+```
+cd mlzoomcamp-midterm-project/
+```
 
 4. Install packages required for this project
 
-```pip install -r requirements.txt```
+```
+pip install -r requirements.txt
+```
 
 
 <a id='train-model'></a>
@@ -94,19 +102,27 @@ You can skip steps 1 and 2 below, if your followed instructions in [4. Virtual e
 
 2. Clone this repo (if you have not done already)
 
-```git clone https://github.com/nindate/mlzoomcamp-midterm-project.git```
+```
+git clone https://github.com/nindate/mlzoomcamp-midterm-project.git
+```
 
 3. Check whether you are already in the project directory which you cloned from git. If not change to that directory.
 
-```pwd```
+```
+pwd
+```
 
 If output of above commands does not show mlzoomcamp-midterm-project at the end, it means you are not in the project directory you cloned. In that case change to the project directory (Below command assumes you are in the directory from where you ran the git clone command above)
 
-```cd mlzoomcamp-midterm-project/```
+```
+cd mlzoomcamp-midterm-project/
+```
 
 4. Run the training script
 
-```python train.py```
+```
+python train.py
+```
 
 <a id='deploy-model-local'></a>
 ## 6. Model deployment as a web service on local machine
@@ -116,11 +132,15 @@ To test the model deployment as a web service - open 2 separate terminal session
 
 From one terminal session run the following command to host the prediction model as a web service.
 
-```gunicorn --bind 0.0.0.0:9696 predict.py```
+```
+gunicorn --bind 0.0.0.0:9696 predict.py
+```
 
 From other terminal session from the cloned project directory, execute the following command to make a request to this web service
 
-```python request.py```
+```
+python request.py
+```
 
 <a id='deploy-model-docker'></a>
 ## 7. Deploy model as a web service to Docker container
@@ -137,41 +157,59 @@ docker ps -a
 Following are the steps to do this:
 1. Clone this repo (if you have not done this already. If done then skip this step)
 
-```git clone https://github.com/nindate/mlzoomcamp-midterm-project.git```
+```
+git clone https://github.com/nindate/mlzoomcamp-midterm-project.git
+```
 
 2. Change to the directory that has the model file, python script (predict.py) for the web service and other required files
 
-```cd mlzoomcamp-midterm-project/app-deploy```
+```
+cd mlzoomcamp-midterm-project/app-deploy
+```
 
 3. Build docker image named bank-td-prediction
 
-```docker build -t "bank-td-prediction" .```
+```
+docker build -t "bank-td-prediction" .
+```
 
 4. Check docker image available. Output of below command should show the image with name bank-td-prediction
 
-```docker images```
+```
+docker images
+```
 
 5. Create a docker container from the image. The model prediction script as a web service will then be running inside this container. Below command will create and run a docker container named bank-td-cont (**--name bank-td-cont**) running as a daemon i.e. non-interactive mode (**-d**), mapping the port 9696 on host to port 9696 on container (**-p 9696:9696** first port is host port, second is container port. If you want to map different port on host just change the first number), from image **bank-td-prediction**. The container will be deleted if stopped or when you shutdown your machine (**--rm**).
 
-```docker run --rm --name bank-td-cont -d -p 9696:9696 bank-td-prediction```
+```
+docker run --rm --name bank-td-cont -d -p 9696:9696 bank-td-prediction
+```
 
 6. Check whether docker container running. Below command should show the container in Running state and not Exited.
 
-```docker ps -a```
+```
+docker ps -a
+```
 
 7. Test sending some sample customer data to the web service and see the results. For this you can use the request.py script provided as part of this repo, which has some sample customer entries and can make a request to the Web app service. Ensure you have activated the virtual environment as explained in [4. Virtual environment and package dependencies](#venv).
 
 Check whether you are already in the project directory which you cloned from git. If not change to that directory.
 
-```pwd```
+```
+pwd
+```
 
 If output of above commands does not show mlzoomcamp-midterm-project at the end, it means you are not in the project directory you cloned. In that case change to the project directory (Below command assumes you are in the directory from where you ran the git clone command above)
 
-```cd mlzoomcamp-midterm-project/```
+```
+cd mlzoomcamp-midterm-project/
+```
 
 Run the script request.py to send a request to the web service running inside the docker container
 
-```python request.py```
+```
+python request.py
+```
 
 
 <a id='deploy-model-cloud'></a>
