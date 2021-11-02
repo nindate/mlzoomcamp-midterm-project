@@ -85,7 +85,12 @@ Following are the steps to do this:
 ```docker run --rm --name bank-td-cont -d -p 9696:9696 bank-td-prediction```
 
 6. Check whether docker container running. Below command should show the container in Running state and not Exited.
+
 ```docker ps -a```
+
+7. Test sending some sample customer data to the web service and see the results. For this you can use the request.py script provided as part of this repo.
+
+```python request.py```
 
 
 <a id='deploy-model-cloud'></a>
