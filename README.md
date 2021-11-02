@@ -11,8 +11,9 @@ This repo contains the work carried out as part of the Mid Term project for the 
 * [3. Work explained](#work-explained)
 * [4. Virtual environment and package dependencies](#venv)
 * [5. Train the model](#train-model)
-* [6. Deploy model as a web service to Docker container](#deploy-model-docker)
-* [7. Deploy model as a web service to Heroku Cloud](#deploy-model-cloud)
+* [6. Model deployment as a web service](#deploy-model)
+* [7. Deploy model as a web service to Docker container](#deploy-model-docker)
+* [8. Deploy model as a web service to Heroku Cloud](#deploy-model-cloud)
 
 <a id='about-project'></a>
 ## 1. About the Project
@@ -100,8 +101,14 @@ You can train the model using below steps.
 
 ```$ python train.py```
 
+<a id='deploy-model'></a>
+## 6. Model deployment as a web service
+For actual use of a model in real world, it needs to be deployed as a service (application) so that users (e.g. in this case Bank's staff who are supposed to call customer for Term Deposit subscription, can use this service. They can now send customer data to the service and get a prediction whether the customer is likely to make a Term deposit or not and hence whether it would be benificial to make the call to customer). The script predict.py can be run to provide the model as a web service.
+
+```$ gunicorn --bind=0.0.0.0:9696 predict.py```
+
 <a id='deploy-model-docker'></a>
-## 6. Deploy model as a web service to Docker container
+## 7. Deploy model as a web service to Docker container
 You can deploy the trained model as a web service running inside a docker container on your local machine.
 
 *Pre-requisites: You should have Docker installed and running on the machine where you want to perform model deployment to docker.*
@@ -144,4 +151,4 @@ Following are the steps to do this:
 
 
 <a id='deploy-model-cloud'></a>
-## 7. Deploy model as a web service to Heroku Cloud
+## 8. Deploy model as a web service to Heroku Cloud
