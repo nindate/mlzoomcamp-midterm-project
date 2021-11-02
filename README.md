@@ -88,7 +88,7 @@ Following are the steps to do this:
 
 ```docker ps -a```
 
-7. Test sending some sample customer data to the web service and see the results. For this you can use the request.py script provided as part of this repo.
+7. Test sending some sample customer data to the web service and see the results. For this you can use the request.py script provided as part of this repo, which has some sample customer entries and can make a request to the Web app service.
 
 ```python request.py```
 
