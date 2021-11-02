@@ -9,9 +9,10 @@ This repo contains the work carried out as part of the Mid Term project for the 
 * [1. About the Project](#about-project)
 * [2. Key files and folders explained](#key-files)
 * [3. Work explained](#work-explained)
-* [4. Train the model](#train-model)
-* [5. Deploy model as a web service to Docker container](#deploy-model-docker)
-* [6. Deploy model as a web service to Heroku Cloud](#deploy-model-cloud)
+* [4. Virtual environment and package dependencies](#venv)
+* [5. Train the model](#train-model)
+* [6. Deploy model as a web service to Docker container](#deploy-model-docker)
+* [7. Deploy model as a web service to Heroku Cloud](#deploy-model-cloud)
 
 <a id='about-project'></a>
 ## 1. About the Project
@@ -47,11 +48,56 @@ Jupyter notebook [notebook.ipynb](./notebook.ipynb) contains all the code for co
   6.2 Train final model
 ```
 
+<a id='venv'></a>
+## 4. Virtual environment and package dependencies
+To ensure all scripts work fine and libraries used during development are the ones which you use during your deployment/testing, Python venv has been used to manage virtual environment and package dependencies. Follow the below steps to setup this up in your environment.
+
+The steps to install Python venv will depend on the Operating system you have. Below steps have been provided in reference to installation on Ubuntu, however you can refer to Official documentation at https://docs.python.org/3/tutorial/venv.html to know appropriate steps for your OS.
+
+1. Install pip3 and venv if not installed (below sample commands to be used on Ubuntu hav been provided
+
+```
+$ sudo apt install -y python3-pip python3-venv
+```
+
+2. Create a virtual environment. Below command creates a virtual environment named mlzoomcamp
+
+```
+$ python3 -m venv mlzoomcamp
+```
+
+3. Activate the virtual environment.
+
+```
+$ . ./mlzoomcamp/bin/activate
+```
+
+4. Install packages required for this project
+
+```
+$ pip install -r requirements.txt
+```
+
+
 <a id='train-model'></a>
-## 4. Train the model
+## 5. Train the model
+You can train the model using below steps.
+1. Activate the virtual environment if not done already. Follow the steps in [4. Virtual environment and package dependencies](#venv)
+
+2. Clone this repo (if you have not done already)
+
+```$ git clone https://github.com/nindate/mlzoomcamp-midterm-project.git```
+
+3. Change to the directory that has the required files
+
+```$ cd mlzoomcamp-midterm-project/```
+
+4. Run the training script
+
+```$ python train.py```
 
 <a id='deploy-model-docker'></a>
-## 5. Deploy model as a web service to Docker container
+## 6. Deploy model as a web service to Docker container
 You can deploy the trained model as a web service running inside a docker container on your local machine.
 
 *Pre-requisites: You should have Docker installed and running on the machine where you want to perform model deployment to docker.*
@@ -78,20 +124,20 @@ Following are the steps to do this:
 
 4. Check docker image available. Output of below command should show the image with name bank-td-prediction
 
-```docker images```
+```$ docker images```
 
 5. Create a docker container from the image. The model prediction script as a web service will then be running inside this container. Below command will create and run a docker container named bank-td-cont (**--name bank-td-cont**) running as a daemon i.e. non-interactive mode (**-d**), mapping the port 9696 on host to port 9696 on container (**-p 9696:9696** first port is host port, second is container port. If you want to map different port on host just change the first number), from image **bank-td-prediction**. The container will be deleted if stopped or when you shutdown your machine (**--rm**).
 
-```docker run --rm --name bank-td-cont -d -p 9696:9696 bank-td-prediction```
+```$ docker run --rm --name bank-td-cont -d -p 9696:9696 bank-td-prediction```
 
 6. Check whether docker container running. Below command should show the container in Running state and not Exited.
 
-```docker ps -a```
+```$ docker ps -a```
 
 7. Test sending some sample customer data to the web service and see the results. For this you can use the request.py script provided as part of this repo, which has some sample customer entries and can make a request to the Web app service.
 
-```python request.py```
+```$ python request.py```
 
 
 <a id='deploy-model-cloud'></a>
-## 6. Deploy model as a web service to Heroku Cloud
+## 7. Deploy model as a web service to Heroku Cloud
