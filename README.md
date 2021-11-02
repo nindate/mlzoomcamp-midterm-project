@@ -214,4 +214,4 @@ python request.py
 
 <a id='deploy-model-cloud'></a>
 ## 8. Deploy model as a web service to Heroku Cloud
-You can deploy the trained model as a web service to cloud. The steps to perform this deployment to Heroku cloud has been explained in [this](./deploy-web-service-to-heroku.md) document 
+You can deploy the trained model as a web service to cloud. The steps to perform this deployment to Heroku cloud, screenshots showing service running from cloud and successful response (prediction) returned from this service has been explained and shown in [this](./deploy-web-service-to-heroku.md) document 
