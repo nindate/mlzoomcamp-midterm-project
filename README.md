@@ -110,9 +110,17 @@ If output of above commands does not show mlzoomcamp-midterm-project at the end,
 
 <a id='deploy-model'></a>
 ## 6. Model deployment as a web service
-For actual use of a model in real world, it needs to be deployed as a service (application) so that users (e.g. in this case Bank's staff who are supposed to call customer for Term Deposit subscription, can use this service. They can now send customer data to the service and get a prediction whether the customer is likely to make a Term deposit or not and hence whether it would be benificial to make the call to customer). The script predict.py can be run to provide the model as a web service.
+For actual use of a model in real world, it needs to be deployed as a service (application) so that users (e.g. in this case Bank's staff who are supposed to call customer for Term Deposit subscription, can use this service. They can now send customer data to the service and get a prediction whether the customer is likely to make a Term deposit or not and hence whether it would be benificial to make the call to customer). 
+
+To test the model deployment as a web service - open 2 separate terminal sessions into your machine (where all this code resides) and activate the virtual environment as explained in [4. Virtual environment and package dependencies](#venv)
+
+From one terminal session run the following command to host the prediction model as a web service.
 
 ```gunicorn --bind 0.0.0.0:9696 predict.py```
+
+From other terminal session from the cloned project directory, execute the following command to make a request to this web service
+
+```python request.py```
 
 <a id='deploy-model-docker'></a>
 ## 7. Deploy model as a web service to Docker container
