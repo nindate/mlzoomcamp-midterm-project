@@ -105,7 +105,7 @@ You can train the model using below steps.
 ## 6. Model deployment as a web service
 For actual use of a model in real world, it needs to be deployed as a service (application) so that users (e.g. in this case Bank's staff who are supposed to call customer for Term Deposit subscription, can use this service. They can now send customer data to the service and get a prediction whether the customer is likely to make a Term deposit or not and hence whether it would be benificial to make the call to customer). The script predict.py can be run to provide the model as a web service.
 
-```$ gunicorn --bind=0.0.0.0:9696 predict.py```
+```$ gunicorn --bind 0.0.0.0:9696 predict.py```
 
 <a id='deploy-model-docker'></a>
 ## 7. Deploy model as a web service to Docker container
