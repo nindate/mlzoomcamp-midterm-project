@@ -12,6 +12,9 @@ from sklearn.feature_extraction import DictVectorizer
 from sklearn import preprocessing
 import pickle
 
+#Suppress warnings
+import warnings
+warnings.filterwarnings("ignore")
 
 #Read data
 datafile = 'bank-additional-full.csv'
