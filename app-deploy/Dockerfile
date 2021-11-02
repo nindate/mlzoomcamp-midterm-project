@@ -11,7 +11,7 @@ COPY ["requirements.txt", "./"]
 
 RUN pip install -r requirements.txt
 
-COPY ["predict.py", "xgb_model.bin", "./"]
+COPY ["predict.py", "request.py", "xgb_model.bin", "./"]
 
 EXPOSE 9696
 
