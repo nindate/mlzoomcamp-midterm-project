@@ -5,7 +5,16 @@ This repo contains the work carried out as part of the Mid Term project for the 
 * https://datatalks.club/courses/2021-winter-ml-zoomcamp.html
 * https://github.com/alexeygrigorev/mlbookcamp-code/tree/master/course-zoomcamp
 
-## About the Project
+## Table of Contents
+* [1. About the Project](#about-project)
+* [2. Key files and folders explained](#key-files)
+* [3. Work explained](#work-explained)
+* [4. Train the model](#train-model)
+* [5. Deploy model as a web service to Docker container](#deploy-model-docker)
+* [6. Deploy model as a web service to Heroku Cloud](#deploy-model-cloud)
+
+<a id='about-project'></a>
+## 1. About the Project
 
 Banks are important institutions that provide funds, in terms of loans, to businesses and individuals to function and prosper. However banks need money to provide as loan and to also make their own investments (e.g. in stocks). One such good source that banks have is in the from of Term Deposits that bank's customers make.
 
@@ -13,12 +22,12 @@ Banks regularly make calls to their customers to secure such Term deposits. Howe
 
 This project aims at building a machine learning model that can be trained from previous marketing campaigns and data collected, to predict customers that potentialy will subscribe to Term deposit with the bank. Further, the prediction model will be hosted as a web service, which can accept customer data (in JSON format) and return the prediction (whether customer is likely to subscribe to Term deposit).
 
+<a id='key-files'></a>
+## 2. Key files and folders explained
 
-## Key files and folders explained
 
-
-
-## Work explained
+<a id='work-explained'></a>
+## 3. Work explained
 
 Jupyter notebook [notebook.ipynb](./notebook.ipynb) contains all the code for coming up with the ML model for this project. This notebook contains the following:
 ```
@@ -38,11 +47,11 @@ Jupyter notebook [notebook.ipynb](./notebook.ipynb) contains all the code for co
   6.2 Train final model
 ```
 
+<a id='train-model'></a>
+## 4. Train the model
 
-## Train the model
+<a id='deploy-model-docker'></a>
+## 5. Deploy model as a web service to Docker container
 
-
-## Deployment of model as a web service, running as a Docker container
-
-
-## Deployment of model as a web service, running on Cloud
+<a id='deploy-model-cloud'></a>
+## 6. Deploy model as a web service to Heroku Cloud
