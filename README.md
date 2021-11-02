@@ -58,54 +58,61 @@ The steps to install Python venv will depend on the Operating system you have. B
 1. Install pip3 and venv if not installed (below sample commands to be used on Ubuntu hav been provided
 
 ```
-$ sudo apt install -y python3-pip python3-venv
+sudo apt install -y python3-pip python3-venv
 ```
 
 2. Create a virtual environment. Below command creates a virtual environment named mlzoomcamp
 
 ```
-$ python3 -m venv mlzoomcamp
+python3 -m venv mlzoomcamp
 ```
 
 3. Activate the virtual environment.
 
-```$ . ./mlzoomcamp/bin/activate```
+```. ./mlzoomcamp/bin/activate```
 
 4. Clone this repo
 
-```$ git clone https://github.com/nindate/mlzoomcamp-midterm-project.git```
+```git clone https://github.com/nindate/mlzoomcamp-midterm-project.git```
 
 5. Change to the directory that has the required files
 
-```$ cd mlzoomcamp-midterm-project/```
+```cd mlzoomcamp-midterm-project/```
 
 4. Install packages required for this project
 
-```$ pip install -r requirements.txt```
+```pip install -r requirements.txt```
 
 
 <a id='train-model'></a>
 ## 5. Train the model
 You can train the model using below steps.
+
+You can skip steps 1, 2 and 3 if your followed instructions in 4. Virtual environment and package dependencies above and are now performing these steps.
+
 1. Activate the virtual environment if not done already. Follow the steps in [4. Virtual environment and package dependencies](#venv)
 
 2. Clone this repo (if you have not done already)
 
-```$ git clone https://github.com/nindate/mlzoomcamp-midterm-project.git```
+```git clone https://github.com/nindate/mlzoomcamp-midterm-project.git```
 
-3. Change to the directory that has the required files
+3. Check whether you are already in the project directory which you cloned from git. If not change to that directory.
 
-```$ cd mlzoomcamp-midterm-project/```
+```pwd```
+
+If output of above commands does not show mlzoomcamp-midterm-project at the end, it means you are not in the project directory you cloned. In that case change to the project directory (Below command assumes you are in the directory from where you ran the git clone command above)
+
+```cd mlzoomcamp-midterm-project/```
 
 4. Run the training script
 
-```$ python train.py```
+```python train.py```
 
 <a id='deploy-model'></a>
 ## 6. Model deployment as a web service
 For actual use of a model in real world, it needs to be deployed as a service (application) so that users (e.g. in this case Bank's staff who are supposed to call customer for Term Deposit subscription, can use this service. They can now send customer data to the service and get a prediction whether the customer is likely to make a Term deposit or not and hence whether it would be benificial to make the call to customer). The script predict.py can be run to provide the model as a web service.
 
-```$ gunicorn --bind 0.0.0.0:9696 predict.py```
+```gunicorn --bind 0.0.0.0:9696 predict.py```
 
 <a id='deploy-model-docker'></a>
 ## 7. Deploy model as a web service to Docker container
@@ -115,39 +122,39 @@ You can deploy the trained model as a web service running inside a docker contai
 Run the below commands to check whether docker service is running and then to see if any docker containers are running.
 
 ```
-$ systemctl status docker
-$ docker ps -a
+systemctl status docker
+docker ps -a
 ```
 
 
 Following are the steps to do this:
 1. Clone this repo (if you have not done already)
 
-```$ git clone https://github.com/nindate/mlzoomcamp-midterm-project.git```
+```git clone https://github.com/nindate/mlzoomcamp-midterm-project.git```
 
 2. Change to the directory that has the model file, python script (predict.py) for the web service and other required files
 
-```$ cd mlzoomcamp-midterm-project/app-deploy```
+```cd mlzoomcamp-midterm-project/app-deploy```
 
 3. Build docker image named bank-td-prediction
 
-```$ docker build -t "bank-td-prediction" .```
+```docker build -t "bank-td-prediction" .```
 
 4. Check docker image available. Output of below command should show the image with name bank-td-prediction
 
-```$ docker images```
+```docker images```
 
 5. Create a docker container from the image. The model prediction script as a web service will then be running inside this container. Below command will create and run a docker container named bank-td-cont (**--name bank-td-cont**) running as a daemon i.e. non-interactive mode (**-d**), mapping the port 9696 on host to port 9696 on container (**-p 9696:9696** first port is host port, second is container port. If you want to map different port on host just change the first number), from image **bank-td-prediction**. The container will be deleted if stopped or when you shutdown your machine (**--rm**).
 
-```$ docker run --rm --name bank-td-cont -d -p 9696:9696 bank-td-prediction```
+```docker run --rm --name bank-td-cont -d -p 9696:9696 bank-td-prediction```
 
 6. Check whether docker container running. Below command should show the container in Running state and not Exited.
 
-```$ docker ps -a```
+```docker ps -a```
 
 7. Test sending some sample customer data to the web service and see the results. For this you can use the request.py script provided as part of this repo, which has some sample customer entries and can make a request to the Web app service.
 
-```$ python request.py```
+```python request.py```
 
 
 <a id='deploy-model-cloud'></a>
