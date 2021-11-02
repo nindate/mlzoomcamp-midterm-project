@@ -68,15 +68,19 @@ $ python3 -m venv mlzoomcamp
 
 3. Activate the virtual environment.
 
-```
-$ . ./mlzoomcamp/bin/activate
-```
+```$ . ./mlzoomcamp/bin/activate```
+
+4. Clone this repo
+
+```$ git clone https://github.com/nindate/mlzoomcamp-midterm-project.git```
+
+5. Change to the directory that has the required files
+
+```$ cd mlzoomcamp-midterm-project/```
 
 4. Install packages required for this project
 
-```
-$ pip install -r requirements.txt
-```
+```$ pip install -r requirements.txt```
 
 
 <a id='train-model'></a>
