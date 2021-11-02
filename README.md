@@ -88,7 +88,7 @@ python3 -m venv mlzoomcamp
 ## 5. Train the model
 You can train the model using below steps.
 
-You can skip steps 1, 2 and 3 if your followed instructions in 4. Virtual environment and package dependencies above and are now performing these steps.
+You can skip steps 1 and 2 below, if your followed instructions in [4. Virtual environment and package dependencies](#venv) above and are now performing these steps.
 
 1. Activate the virtual environment if not done already. Follow the steps in [4. Virtual environment and package dependencies](#venv)
 
@@ -134,9 +134,8 @@ systemctl status docker
 docker ps -a
 ```
 
-
 Following are the steps to do this:
-1. Clone this repo (if you have not done already)
+1. Clone this repo (if you have not done this already. If done then skip this step)
 
 ```git clone https://github.com/nindate/mlzoomcamp-midterm-project.git```
 
@@ -160,7 +159,17 @@ Following are the steps to do this:
 
 ```docker ps -a```
 
-7. Test sending some sample customer data to the web service and see the results. For this you can use the request.py script provided as part of this repo, which has some sample customer entries and can make a request to the Web app service.
+7. Test sending some sample customer data to the web service and see the results. For this you can use the request.py script provided as part of this repo, which has some sample customer entries and can make a request to the Web app service. Ensure you have activated the virtual environment as explained in [4. Virtual environment and package dependencies](#venv).
+
+Check whether you are already in the project directory which you cloned from git. If not change to that directory.
+
+```pwd```
+
+If output of above commands does not show mlzoomcamp-midterm-project at the end, it means you are not in the project directory you cloned. In that case change to the project directory (Below command assumes you are in the directory from where you ran the git clone command above)
+
+```cd mlzoomcamp-midterm-project/```
+
+Run the script request.py to send a request to the web service running inside the docker container
 
 ```python request.py```
 
