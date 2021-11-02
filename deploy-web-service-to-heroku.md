@@ -128,6 +128,6 @@ Before you can test the app (run the request.py script provided in this repo), e
 Now you can test the app by running following command
 
 ```
-python request.py
+python cloud-request.py
 ```
 
