@@ -52,6 +52,41 @@ Jupyter notebook [notebook.ipynb](./notebook.ipynb) contains all the code for co
 
 <a id='deploy-model-docker'></a>
 ## 5. Deploy model as a web service to Docker container
+You can deploy the trained model as a web service running inside a docker container on your local machine.
+
+*Pre-requisites: You should have Docker installed and running on the machine where you want to perform model deployment to docker.*
+Run the below commands to check whether docker service is running and then to see if any docker containers are running.
+
+```
+$ systemctl status docker
+$ docker ps -a
+```
+
+
+Following are the steps to do this:
+1. Clone this repo (if you have not done already)
+
+```$ git clone https://github.com/nindate/mlzoomcamp-midterm-project.git```
+
+2. Change to the directory that has the model file, python script (predict.py) for the web service and other required files
+
+```$ cd mlzoomcamp-midterm-project/app-deploy```
+
+3. Build docker image named bank-td-prediction
+
+```$ docker build -t "bank-td-prediction" .```
+
+4. Check docker image available. Output of below command should show the image with name bank-td-prediction
+
+```docker images```
+
+5. Create a docker container from the image. The model prediction script as a web service will then be running inside this container. Below command will create and run a docker container named bank-td-cont (**--name bank-td-cont**) running as a daemon i.e. non-interactive mode (**-d**), mapping the port 9696 on host to port 9696 on container (**-p 9696:9696** first port is host port, second is container port. If you want to map different port on host just change the first number), from image **bank-td-prediction**. The container will be deleted if stopped or when you shutdown your machine (**--rm**).
+
+```docker run --rm --name bank-td-cont -d -p 9696:9696 bank-td-prediction```
+
+6. Check whether docker container running. Below command should show the container in Running state and not Exited.
+```docker ps -a```
+
 
 <a id='deploy-model-cloud'></a>
 ## 6. Deploy model as a web service to Heroku Cloud
