@@ -131,3 +131,13 @@ Now you can test the app by running following command
 python cloud-request.py
 ```
 
+9. Screenshots of successful app deployment in Heroku and successful response (prediction) from the service
+
+Following screenshot shows successful Web app deployed in Heroku cloud
+
+![Successful deployment](images/heroku-app-deployed.png)
+
+Following screenshot shows successful response from the Web app deployed in Heroku cloud
+
+![Successful response](images/heroku-app-response-success.png)
+
