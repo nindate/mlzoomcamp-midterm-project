@@ -91,7 +91,7 @@ Jupyter notebook [notebook.ipynb](./notebook.ipynb) contains all the code for co
 * Evaluated using other models - DecitionTreeClassifier, RandomForestClassifier and XGBoost - with similar experiments as above (feature dropping, scaling etc.)
 * Parameter tuning of the best experiment for each of the model was done
 * Finally compared results from all the model tunings to determine the best model (with best experiment of feature scaling and feature dropping) with best hyper-parameters
-* Trained final model on full train data (training + validation) and validated on test data, saved model file to disk
+* Trained final model on full train data (training + validation) and validated on test data, saved model file to disk. Achived **AUC of 0.810** on final model validated on test dataset.
 * Created script to use the prediction model a a web service using Flask
 * Deployed the web service to Docker container running on local machine and then to Heroku cloud
 
