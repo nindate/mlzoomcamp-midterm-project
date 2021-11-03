@@ -24,6 +24,8 @@ Banks regularly make calls to their customers to secure such Term deposits. Howe
 
 This project aims at building a machine learning model that can be trained from previous marketing campaigns and data collected, to predict customers that potentialy will subscribe to Term deposit with the bank. Further, the prediction model will be hosted as a web service, which can accept customer data (in JSON format) and return the prediction (whether customer is likely to subscribe to Term deposit).
 
+This is a binary classification problem.
+
 <a id='key-files'></a>
 ## 2. Key files and folders explained
 **Python package dependencies**
@@ -31,6 +33,11 @@ This project aims at building a machine learning model that can be trained from 
 
 **EDA, Feature analysis, Models, Parameter tuning**
 >* bank-additional-full.csv - dataset used for this project
+
+Source: [Moro et al., 2014] S. Moro, P. Cortez and P. Rita. A Data-Driven Approach to Predict the Success of Bank Telemarketing. Decision Support Systems, Elsevier, 62:22-31, June 2014
+
+URL:  https://archive.ics.uci.edu/ml/datasets/bank+marketing
+
 >* notebook.ipynb - Jupyter notebook used for the analysis, model exploration, tuning etc. This notebook also has output for all (most) of the cells. The size is big and hence maynot open from github. Better way is to download and open in your Jupyter notebook to see the steps and output.
 >* notebook-without-output.ipynb - Above notebook with output stripped to reduce the size. Can view in github also.
 >* work-dump - Folder with hyper-parameter tuning scores for various parameter combinations for the models evaluated in thie project
@@ -74,6 +81,20 @@ Jupyter notebook [notebook.ipynb](./notebook.ipynb) contains all the code for co
   6.1 Compare results from hyper-parameter tuning for the different models and choose final model
   6.2 Train final model
 ```
+
+**Summary**
+* This is a binary classification problem. The data is related with direct marketing campaigns of a Portuguese banking institution. The marketing campaigns were based on phone calls. Often, more than one contact to the same client was required, in order to access if the product (bank term deposit) would be ('yes') or not ('no') subscribed.
+* EDA was performed analysing for missing data, data distribution, target feature imbalance, feature importance using mutual information between categorical features, correlation of numerical features with target and amongst them, looking for extreme high values, cardinality of categorical features. Performed different transformations to see effect on distribution.
+* Baseline model was prepared using Logistic Regression
+* Data was split into Train (70%), Validation (20%), Test (10%). Further experiments were done on training data validating on the validation data (not touching the test data at all)
+* Experiments were done to improve the model performance. This involved evaluating model by dropping one feature at a time, then dropping groups of features at a time where dropping a feature had resulted in improved score, scaling the numerical features, using polynomial features and one-hot encoding the categorical features. **Score improved with scaling and dropping a set of features**
+* Evaluated using other models - DecitionTreeClassifier, RandomForestClassifier and XGBoost - with similar experiments as above (feature dropping, scaling etc.)
+* Parameter tuning of the best experiment for each of the model was done
+* Finally compared results from all the model tunings to determine the best model (with best experiment of feature scaling and feature dropping) with best hyper-parameters
+* Trained final model on full train data (training + validation) and validated on test data, saved model file to disk
+* Created script to use the prediction model a a web service using Flask
+* Deployed the web service to Docker container running on local machine and then to Heroku cloud
+
 
 <a id='venv'></a>
 ## 4. Virtual environment and package dependencies
