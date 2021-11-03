@@ -22,7 +22,7 @@ Banks are important institutions that provide funds, in terms of loans, to busin
 
 Banks regularly make calls to their customers to secure such Term deposits. However, from a big list of all its customers, it would be wise to make calls to the customers who are more likely to invest. This way, banks can reduce the cost of acquisition of Term deposit (in the form of payment to staff making call, call charges and so on.).
 
-This project aims at building a machine learning model to predict customers that potentially will subscribe to Term deposit. Model is trained using data collected from previous marketing campaigns by the bank. Further, the prediction model will be hosted as a web service, which can accept customer data (in JSON format) and return the prediction (whether customer is likely to subscribe to Term deposit).
+This project aims at building a machine learning model to predict customers that potentially will subscribe to Term deposit. Model is to be trained using data collected from previous marketing campaigns by the bank. Further, the prediction model is to be hosted as a web service, which can accept customer data (in JSON format) and return the prediction (whether customer is likely to subscribe to Term deposit). Deploying the model as a web service will allow the bank staff to send customer data to this service and receive a prediction from the model, whether the customer is likely to subscribe. Based on the prediction, the bank staff can then make calls to customers that are more likely to invest, thus securing all important funds that the bank can then use ofr loans and investments.
 
 This is a binary classification problem.
 
