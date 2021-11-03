@@ -22,7 +22,7 @@ Banks are important institutions that provide funds, in terms of loans, to busin
 
 Banks regularly make calls to their customers to secure such Term deposits. However, from a big list of all its customers, it would be wise to make calls to the customers who are more likely to invest. This way, banks can reduce the cost of acquisition of Term deposit (in the form of payment to staff making call, call charges and so on.).
 
-This project aims at building a machine learning model to predict customers that potentially will subscribe to Term deposit. Model is to be trained using data collected from previous marketing campaigns by the bank. Further, the prediction model is to be hosted as a web service, which can accept customer data (in JSON format) and return the prediction (whether customer is likely to subscribe to Term deposit). Deploying the model as a web service will allow the bank staff to send customer data to this service and receive a prediction from the model, whether the customer is likely to subscribe. Based on the prediction, the bank staff can then make calls to customers that are more likely to invest, thus securing all important funds that the bank can then use ofr loans and investments.
+This project aims at building a machine learning model to predict customers that potentially will subscribe to Term deposit. Model is to be trained using data collected from previous marketing campaigns by the bank. Further, the prediction model is to be hosted as a web service, which can accept customer data (in JSON format) and return the prediction (whether customer is likely to subscribe to Term deposit). Deploying the model as a web service will allow the bank staff to send customer data to this service and receive a prediction from the model, whether the customer is likely to subscribe. Based on the prediction, the bank staff can then make calls to customers that are more likely to invest, thus securing all important funds that the bank can then use for loans and investments.
 
 This is a binary classification problem.
 
@@ -88,12 +88,12 @@ Jupyter notebook [notebook.ipynb](./notebook.ipynb) contains all the code for co
 ```
 
 **Summary**
-* This is a binary classification problem. The data is related with direct marketing campaigns of a Portuguese banking institution. The marketing campaigns were based on phone calls. Often, more than one contact to the same client was required, in order to access if the product (bank term deposit) would be ('yes') or not ('no') subscribed.
+* This is a binary classification problem. The data is related with direct marketing campaigns of a Portuguese banking institution. The marketing campaigns were based on phone calls. Often, more than one contact to the same client was required, in order to assess if the product (bank term deposit) would be ('yes') or not ('no') subscribed.
 * EDA was performed analysing for missing data, data distribution, target feature imbalance, feature importance using mutual information between categorical features, correlation of numerical features with target and amongst them, looking for extreme high values, cardinality of categorical features. Performed different transformations to see effect on distribution.
 * Baseline model was prepared using Logistic Regression
 * Data was split into Train (70%), Validation (20%), Test (10%). Further experiments were done on training data validating on the validation data (not touching the test data at all)
 * Experiments were done to improve the model performance. This involved evaluating model by dropping one feature at a time, then dropping groups of features at a time where dropping a feature had resulted in improved score, scaling the numerical features, using polynomial features and one-hot encoding the categorical features. **Score improved with scaling and dropping a set of features**
-* Evaluated using other models - DecitionTreeClassifier, RandomForestClassifier and XGBoost - with similar experiments as above (feature dropping, scaling etc.)
+* Evaluated using other models - DecisionTreeClassifier, RandomForestClassifier and XGBoost - with similar experiments as above (feature dropping, scaling etc.)
 * Parameter tuning of the best experiment for each of the model was done
 * Finally compared results from all the model tunings to determine the best model (with best experiment of feature scaling and feature dropping) with best hyper-parameters
 * Trained final model on full train data (training + validation) and validated on test data, saved model file to disk. Achived **AUC of 0.810** on final model validated on test dataset.
