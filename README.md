@@ -29,7 +29,8 @@ This is a binary classification problem.
 <a id='key-files'></a>
 ## 2. Key files and folders explained
 **Python package dependencies**
->* requirements.txt - Python package dependencies file. Should be used to install packages required for this project as explained in [4. Virtual environment and package dependencies](#venv)
+>* requirements.txt - Python package dependencies file. Should be used to install packages required for this project.
+>* Further explanation in [4. Virtual environment and package dependencies](#venv)
 
 **EDA, Feature analysis, Models, Parameter tuning**
 >* bank-additional-full.csv - dataset used for this project
@@ -45,18 +46,22 @@ URL:  https://archive.ics.uci.edu/ml/datasets/bank+marketing
 **Model training**
 >* train.py - Script to train the final/best model with tuned parameters and save the model file to disk
 >* xgb_model.bin - Saved model file. This file contains poly (for polynomial feature transformation), dv (DictVectorizer for One-hot encoding) and xgb (the trained XGBoost model).
+>* Further explanation in [5. Train the model](#train-model)
 
 **Prediction model as a Web service**
 >* predict.py - Prediction model deployed as a Web service using Flask
 >* request.py - Sample sript to send request to the Web service (run via predict.py) and display the output (prediction). To make it convinient to test, 4 sample customer data points have been added in the script. You can edit the script and change customer variable to use any of these 4 datapoints (customer1, 2, 3, 4) to test for different customers. 
+>* Further explanation in [6. Model deployment as a web service on local machine](#deploy-model-local)
 
 **Deployment to Docker**
 >* app-deploy - Folder having all the necessary files (Dockerfile, model, web service script, request/test script) required for deployment to Docker running locally on your machine.
+>* Further explanation in [7. Deploy model as a web service to Docker container](#deploy-model-docker)
 
 **Deployment to Cloud**
 >* heroku-app-deploy - Folder having all the necessary files (Dockerfile, model, web service script, request/test script) required for deployment to Heroku cloud.
 >* cloud-request.py - Sample sript to send request to the Web service (run via predict.py) running on Heroku cloud and display the output (prediction). To make it convinient to test, 4 sample customer data points have been added in the script. You can edit the script and change customer variable to use any of these 4 datapoints (customer1, 2, 3, 4) to test for different customers. 
 >* deploy-web-service-to-heroku.md - Provides instructions on how to deploy the Web service to Heroku cloud and test it. Also has screenshots showing the successful deployment to Cloud and a sample test execution (to refer to, incase the Cloud based service is not available when you test)
+>* Further explanation in [8. Deploy model as a web service to Heroku Cloud](#deploy-model-cloud)
 
 **Miscellaneous**
 >* images - contains screenshots for the cloud deployment instructions 
