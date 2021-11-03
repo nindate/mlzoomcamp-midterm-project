@@ -26,7 +26,33 @@ This project aims at building a machine learning model that can be trained from 
 
 <a id='key-files'></a>
 ## 2. Key files and folders explained
+**Python package dependencies**
+>* requirements.txt - Python package dependencies file. Should be used to install packages required for this project as explained in [4. Virtual environment and package dependencies](#venv)
 
+**EDA, Feature analysis, Models, Parameter tuning**
+>* bank-additional-full.csv - dataset used for this project
+>* notebook.ipynb - Jupyter notebook used for the analysis, model exploration, tuning etc. This notebook also has output for all (most) of the cells. The size is big and hence maynot open from github. Better way is to download and open in your Jupyter notebook to see the steps and output.
+>* notebook-without-output.ipynb - Above notebook with output stripped to reduce the size. Can view in github also.
+>* work-dump - Folder with hyper-parameter tuning scores for various parameter combinations for the models evaluated in thie project
+
+**Model training**
+>* train.py - Script to train the final/best model with tuned parameters and save the model file to disk
+>* xgb_model.bin - Saved model file. This file contains poly (for polynomial feature transformation), dv (DictVectorizer for One-hot encoding) and xgb (the trained XGBoost model).
+
+**Prediction model as a Web service**
+>* predict.py - Prediction model deployed as a Web service using Flask
+>* request.py - Sample sript to send request to the Web service (run via predict.py) and display the output (prediction). To make it convinient to test, 4 sample customer data points have been added in the script. You can edit the script and change customer variable to use any of these 4 datapoints (customer1, 2, 3, 4) to test for different customers. 
+
+**Deployment to Docker**
+>* app-deploy - Folder having all the necessary files (Dockerfile, model, web service script, request/test script) required for deployment to Docker running locally on your machine.
+
+**Deployment to Cloud**
+>* heroku-app-deploy - Folder having all the necessary files (Dockerfile, model, web service script, request/test script) required for deployment to Heroku cloud.
+>* cloud-request.py - Sample sript to send request to the Web service (run via predict.py) running on Heroku cloud and display the output (prediction). To make it convinient to test, 4 sample customer data points have been added in the script. You can edit the script and change customer variable to use any of these 4 datapoints (customer1, 2, 3, 4) to test for different customers. 
+>* deploy-web-service-to-heroku.md - Provides instructions on how to deploy the Web service to Heroku cloud and test it. Also has screenshots showing the successful deployment to Cloud and a sample test execution (to refer to, incase the Cloud based service is not available when you test)
+
+**Miscellaneous**
+>* images - contains screenshots for the cloud deployment instructions 
 
 <a id='work-explained'></a>
 ## 3. Work explained
